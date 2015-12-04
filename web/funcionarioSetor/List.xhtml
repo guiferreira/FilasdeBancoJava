@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFuncionarioSetorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFuncionarioSetorEmpty}" rendered="#{funcionarioSetorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{funcionarioSetorController.items.rowCount > 0}">
+                    <h:outputText value="#{funcionarioSetorController.pagination.pageFirstItem + 1}..#{funcionarioSetorController.pagination.pageLastItem + 1}/#{funcionarioSetorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{funcionarioSetorController.previous}" value="#{bundle.Previous} #{funcionarioSetorController.pagination.pageSize}" rendered="#{funcionarioSetorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{funcionarioSetorController.next}" value="#{bundle.Next} #{funcionarioSetorController.pagination.pageSize}" rendered="#{funcionarioSetorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{funcionarioSetorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFuncionarioSetorTitle_dthrAlteracao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dthrAlteracao}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFuncionarioSetorTitle_setor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.setor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFuncionarioSetorTitle_funcionario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.funcionario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{funcionarioSetorController.prepareView}" title="#{bundle.ListFuncionarioSetorViewLink}" styleClass="ico"><b:icon name="eye-open" /></h:commandLink>
+                            |
+                            <h:commandLink action="#{funcionarioSetorController.prepareEdit}" title="#{bundle.ListFuncionarioSetorViewLink}" styleClass="ico"><b:icon name="pencil" /></h:commandLink>
+                            |
+                            <h:commandLink action="#{funcionarioSetorController.destroy}" title="#{bundle.ListFuncionarioSetorViewLink}" styleClass="ico"><b:icon name="trash" /></h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{funcionarioSetorController.prepareCreate}" value="#{bundle.ListFuncionarioSetorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFuncionarioSetorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

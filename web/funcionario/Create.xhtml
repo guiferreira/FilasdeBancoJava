@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFuncionarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{funcionarioController.selected.nome}" title="#{bundle.CreateFuncionarioTitle_nome}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_nome}"/>
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_cpf}" for="cpf" />
+                    <h:inputText id="cpf" value="#{funcionarioController.selected.cpf}" title="#{bundle.CreateFuncionarioTitle_cpf}" />
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_login}" for="login" />
+                    <h:inputText id="login" value="#{funcionarioController.selected.login}" title="#{bundle.CreateFuncionarioTitle_login}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_login}"/>
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_senha}" for="senha" />
+                    <h:inputText id="senha" value="#{funcionarioController.selected.senha}" title="#{bundle.CreateFuncionarioTitle_senha}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_senha}"/>
+                    <h:outputLabel value="#{bundle.CreateFuncionarioLabel_ativo}" for="ativo" />
+                    <h:selectOneMenu id="ativo" value="#{funcionarioController.selected.ativo}" title="#{bundle.CreateFuncionarioTitle_ativo}" required="true" requiredMessage="#{bundle.CreateFuncionarioRequiredMessage_ativo}">
+                        <f:selectItem itemValue="" itemLabel="--" />
+                        <f:selectItem itemValue="S" itemLabel="Sim" />
+                        <f:selectItem itemValue="N" itemLabel="Não" />
+                     </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionarioController.create}">
+                    <b:button value="#{bundle.CreateFuncionarioSaveLink}" ></b:button>
+                </h:commandLink>
+                <br />
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareList}" value="#{bundle.CreateFuncionarioShowAllLink}" immediate="true"/>
+                
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

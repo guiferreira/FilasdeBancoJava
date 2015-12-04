@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>TrabalhoOO3</title>
+        <h:outputStylesheet name="css/estilo.css"/>
+    </h:head>
+    <h:body>
+        <b:navBar brand="TrabalhoOO3" brandHref="home.xhtml">
+            <b:navbarLinks>
+                <b:navLink value="Atendimentos" outcome="/atendimento/List"></b:navLink>
+                <b:navLink value="Funcionários" outcome="/funcionario/List"></b:navLink>
+                <b:navLink value="Funcionário Setor" outcome="/funcionarioSetor/List"></b:navLink>
+                <b:navLink value="Setor" outcome="/setor/List"></b:navLink>
+                <b:navLink value="Tipos Atendimento" outcome="/tipoAtendimento/List"></b:navLink>
+                <b:navLink value="Senha" outcome="/senha/List"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+        <h:form>
+        <h:commandButton class="btn btn-info" action="#{loginBean.sair}" value="Log out" />
+        </h:form>
+        
+        <b:container styleClass="body">
+            <br/>
+            <h1 style="text-align: center;">Bem vindo ao sistema de controle de filas TrabalhoOO3!</h1>
+            <br/>
+        </b:container>
+        <br />
+    </h:body>
+</html>
+

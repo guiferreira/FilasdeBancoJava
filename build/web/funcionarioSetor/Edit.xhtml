@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFuncionarioSetorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFuncionarioSetorLabel_dthrAlteracao}" for="dthrAlteracao" />
+                    <h:inputText id="dthrAlteracao" value="#{funcionarioSetorController.selected.dthrAlteracao}" title="#{bundle.EditFuncionarioSetorTitle_dthrAlteracao}" required="true" requiredMessage="#{bundle.EditFuncionarioSetorRequiredMessage_dthrAlteracao}">
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFuncionarioSetorLabel_setor}" for="setor" />
+                    <h:selectOneMenu id="setor" value="#{funcionarioSetorController.selected.setor}" title="#{bundle.EditFuncionarioSetorTitle_setor}" required="true" requiredMessage="#{bundle.EditFuncionarioSetorRequiredMessage_setor}">
+                        <f:selectItems value="#{setorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditFuncionarioSetorLabel_funcionario}" for="funcionario" />
+                    <h:selectOneMenu id="funcionario" value="#{funcionarioSetorController.selected.funcionario}" title="#{bundle.EditFuncionarioSetorTitle_funcionario}" required="true" requiredMessage="#{bundle.EditFuncionarioSetorRequiredMessage_funcionario}">
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{funcionarioSetorController.update}" value="#{bundle.EditFuncionarioSetorSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFuncionarioSetorViewLink}"/>
+                <br />
+                <h:commandLink action="#{funcionarioSetorController.prepareList}" value="#{bundle.EditFuncionarioSetorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFuncionarioSetorIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

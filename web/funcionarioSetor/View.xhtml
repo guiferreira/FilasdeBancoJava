@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFuncionarioSetorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFuncionarioSetorLabel_dthrAlteracao}"/>
+                    <h:outputText value="#{funcionarioSetorController.selected.dthrAlteracao}" title="#{bundle.ViewFuncionarioSetorTitle_dthrAlteracao}">
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewFuncionarioSetorLabel_setor}"/>
+                    <h:outputText value="#{funcionarioSetorController.selected.setor}" title="#{bundle.ViewFuncionarioSetorTitle_setor}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioSetorLabel_funcionario}"/>
+                    <h:outputText value="#{funcionarioSetorController.selected.funcionario}" title="#{bundle.ViewFuncionarioSetorTitle_funcionario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionarioSetorController.destroyAndView}" value="#{bundle.ViewFuncionarioSetorDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFuncionarioSetorEditLink}"/>
+                <br />
+                <h:commandLink action="#{funcionarioSetorController.prepareCreate}" value="#{bundle.ViewFuncionarioSetorCreateLink}" />
+                <br />
+                <h:commandLink action="#{funcionarioSetorController.prepareList}" value="#{bundle.ViewFuncionarioSetorShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFuncionarioSetorIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

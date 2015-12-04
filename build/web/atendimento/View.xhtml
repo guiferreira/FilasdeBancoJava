@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAtendimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAtendimentoLabel_idatendimento}"/>
+                    <h:outputText value="#{atendimentoController.selected.idatendimento}" title="#{bundle.ViewAtendimentoTitle_idatendimento}"/>
+                    <h:outputText value="#{bundle.ViewAtendimentoLabel_dthrInicio}"/>
+                    <h:outputText value="#{atendimentoController.selected.dthrInicio}" title="#{bundle.ViewAtendimentoTitle_dthrInicio}">
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAtendimentoLabel_dthrFim}"/>
+                    <h:outputText value="#{atendimentoController.selected.dthrFim}" title="#{bundle.ViewAtendimentoTitle_dthrFim}">
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAtendimentoLabel_idsenha}"/>
+                    <h:outputText value="#{atendimentoController.selected.idsenha}" title="#{bundle.ViewAtendimentoTitle_idsenha}"/>
+                    <h:outputText value="#{bundle.ViewAtendimentoLabel_idfuncionario}"/>
+                    <h:outputText value="#{atendimentoController.selected.idfuncionario}" title="#{bundle.ViewAtendimentoTitle_idfuncionario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{atendimentoController.destroyAndView}" value="#{bundle.ViewAtendimentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAtendimentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{atendimentoController.prepareCreate}" value="#{bundle.ViewAtendimentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{atendimentoController.prepareList}" value="#{bundle.ViewAtendimentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAtendimentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,37 @@
+/* 
+    Created on : 02/12/2015, 23:48:13
+    Author     : Maike Nunes
+*/
+body{
+    background: #dfecf1;
+}
+.body{
+    width: 90%;
+    margin: 0 auto;
+    background: #fefeff;
+    margin-top: -20px;
+}
+
+table tr th,
+table tr td{
+    padding: 5px;
+}
+
+a.button{
+    padding: 10px 15px 10px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    color: black;
+    font-weight: bold;
+}
+a.ico{
+    color: black;
+}
+
+.bodyLogin{
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    background: #fefeff;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTipoAtendimentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTipoAtendimentoLabel_idtipoAtendimento}"/>
+                    <h:outputText value="#{tipoAtendimentoController.selected.idtipoAtendimento}" title="#{bundle.ViewTipoAtendimentoTitle_idtipoAtendimento}"/>
+                    <h:outputText value="#{bundle.ViewTipoAtendimentoLabel_descricao}"/>
+                    <h:outputText value="#{tipoAtendimentoController.selected.descricao}" title="#{bundle.ViewTipoAtendimentoTitle_descricao}"/>
+                    <h:outputText value="#{bundle.ViewTipoAtendimentoLabel_preferencia}"/>
+                    <h:outputText value="#{tipoAtendimentoController.selected.preferencia}" title="#{bundle.ViewTipoAtendimentoTitle_preferencia}"/>
+                    <h:outputText value="#{bundle.ViewTipoAtendimentoLabel_ativo}"/>
+                    <h:outputText value="#{tipoAtendimentoController.selected.ativo}" title="#{bundle.ViewTipoAtendimentoTitle_ativo}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoAtendimentoController.destroyAndView}" value="#{bundle.ViewTipoAtendimentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTipoAtendimentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{tipoAtendimentoController.prepareCreate}" value="#{bundle.ViewTipoAtendimentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{tipoAtendimentoController.prepareList}" value="#{bundle.ViewTipoAtendimentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTipoAtendimentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Visualizador</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="body">
+        <section id="section_master_destaque" class="seciton_ing_master">
+            XXX111
+        </section>
+        <section id="section_master">
+            <div id="anterior" class="0" >--</div>
+            <div id="anterior" class="1" >--</div>
+            <div id="anterior" class="2" >--</div>
+            <div id="anterior" class="3" >--</div>
+            <div id="anterior" class="4" >--</div>
+            <div id="anterior" class="5" >--</div>
+        </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            setInterval(function(){
+                console.log(new Date());
+                $.ajax({
+                    method: "POST",
+                    url: "/TrabalhoOO3/Visualizador",
+                    data: {}
+                }).done(function( msg ) {
+                    var jsonResult = JSON.parse(msg)
+                    console.log(jsonResult);
+                    
+                    if(jsonResult.length == 0){
+                        return;
+                    }
+                    
+                    if(jsonResult[0].cod != $('#section_master_destaque').html()){
+                        $('#section_master_destaque').html(jsonResult[0].cod);
+                        $('#section_master_destaque').css({'color':'red'});
+                    }else{
+                        $('#section_master_destaque').css({'color':'white'});
+                    }
+                    
+
+                    for(x=1;x<jsonResult.length;x++){
+                        $('#section_master #anterior.'+(x-1)).html(jsonResult[x].cod);
+                    }
+                }); 
+            }, 3000);
+        </script>
+        <style>
+            .body {
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+            }
+            #section_master_destaque {
+                width: 90%;
+                height: 50%;
+                background: black;
+                margin: 0 auto;
+                font-size: 10em;
+                text-align: center;
+                color: white;
+                font-style: italic;
+                border: 1px solid white;
+                border-radius: 15px;
+            }
+            #section_master #anterior{
+                width: 90%;
+                height: 70%;
+                background: black;
+                margin: 0 auto;
+                font-size: 2em;
+                text-align: center;
+                color: white;
+                font-style: italic;
+                border: 1px solid white;
+                border-radius: 15px;
+            }
+        </style>
+    </body>
+</html>

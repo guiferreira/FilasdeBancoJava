@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSenhaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_idsenha}" for="idsenha" />
+                    <h:inputText id="idsenha" value="#{senhaController.selected.idsenha}" title="#{bundle.CreateSenhaTitle_idsenha}" required="true" requiredMessage="#{bundle.CreateSenhaRequiredMessage_idsenha}"/>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_chave}" for="chave" />
+                    <h:inputText id="chave" value="#{senhaController.selected.chave}" title="#{bundle.CreateSenhaTitle_chave}" required="true" requiredMessage="#{bundle.CreateSenhaRequiredMessage_chave}"/>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_dthrRetirada}" for="dthrRetirada" />
+                    <h:inputText id="dthrRetirada" value="#{senhaController.selected.dthrRetirada}" title="#{bundle.CreateSenhaTitle_dthrRetirada}" required="true" requiredMessage="#{bundle.CreateSenhaRequiredMessage_dthrRetirada}">
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_dthrChamada}" for="dthrChamada" />
+                    <h:inputText id="dthrChamada" value="#{senhaController.selected.dthrChamada}" title="#{bundle.CreateSenhaTitle_dthrChamada}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_dthrCancelada}" for="dthrCancelada" />
+                    <h:inputText id="dthrCancelada" value="#{senhaController.selected.dthrCancelada}" title="#{bundle.CreateSenhaTitle_dthrCancelada}" >
+                        <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_idtipoAtendimento}" for="idtipoAtendimento" />
+                    <h:selectOneMenu id="idtipoAtendimento" value="#{senhaController.selected.idtipoAtendimento}" title="#{bundle.CreateSenhaTitle_idtipoAtendimento}" required="true" requiredMessage="#{bundle.CreateSenhaRequiredMessage_idtipoAtendimento}">
+                        <f:selectItems value="#{tipoAtendimentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_idsetor}" for="idsetor" />
+                    <h:selectOneMenu id="idsetor" value="#{senhaController.selected.idsetor}" title="#{bundle.CreateSenhaTitle_idsetor}" required="true" requiredMessage="#{bundle.CreateSenhaRequiredMessage_idsetor}">
+                        <f:selectItems value="#{setorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateSenhaLabel_idfuncionario}" for="idfuncionario" />
+                    <h:selectOneMenu id="idfuncionario" value="#{senhaController.selected.idfuncionario}" title="#{bundle.CreateSenhaTitle_idfuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{senhaController.create}" value="#{bundle.CreateSenhaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{senhaController.prepareList}" value="#{bundle.CreateSenhaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSenhaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
