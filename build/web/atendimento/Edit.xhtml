@@ -15,8 +15,7 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditAtendimentoLabel_idatendimento}" for="idatendimento" />
-                    <h:inputText id="idatendimento" value="#{atendimentoController.selected.idatendimento}" title="#{bundle.EditAtendimentoTitle_idatendimento}" required="true" requiredMessage="#{bundle.EditAtendimentoRequiredMessage_idatendimento}"/>
+                    
                     <h:outputLabel value="#{bundle.EditAtendimentoLabel_dthrInicio}" for="dthrInicio" />
                     <h:inputText id="dthrInicio" value="#{atendimentoController.selected.dthrInicio}" title="#{bundle.EditAtendimentoTitle_dthrInicio}" required="true" requiredMessage="#{bundle.EditAtendimentoRequiredMessage_dthrInicio}">
                         <f:convertDateTime pattern="yyyy-MM-dd HH:mm" />

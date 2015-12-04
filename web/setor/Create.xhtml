@@ -15,12 +15,12 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateSetorLabel_idsetor}" for="idsetor" />
-                    <h:inputText id="idsetor" value="#{setorController.selected.idsetor}" title="#{bundle.CreateSetorTitle_idsetor}" required="true" requiredMessage="#{bundle.CreateSetorRequiredMessage_idsetor}"/>
+                    
                     <h:outputLabel value="#{bundle.CreateSetorLabel_descricao}" for="descricao" />
                     <h:inputText id="descricao" value="#{setorController.selected.descricao}" title="#{bundle.CreateSetorTitle_descricao}" required="true" requiredMessage="#{bundle.CreateSetorRequiredMessage_descricao}"/>
                     <h:outputLabel value="#{bundle.CreateSetorLabel_ativo}" for="ativo" />
                     <h:inputText id="ativo" value="#{setorController.selected.ativo}" title="#{bundle.CreateSetorTitle_ativo}" required="true" requiredMessage="#{bundle.CreateSetorRequiredMessage_ativo}"/>
+                
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{setorController.create}" value="#{bundle.CreateSetorSaveLink}" />
